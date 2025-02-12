@@ -1,7 +1,7 @@
 import React, {createContext, useState, useEffect, ReactNode, useContext, useRef} from "react";
 
 import { getCityWeather } from "../api/fetchWeather";
-import { WeatherType } from "../../types/index.d.ts";
+import { WeatherType } from "../../types/index.ts";
 
 interface WeatherContextType {
     tempF: string;
@@ -14,7 +14,7 @@ interface WeatherContextType {
 }
 
 const WeatherContext = createContext<WeatherContextType>({
-    tempF: 'N/A',
+    tempF: '',
     setTempF: () => {},
     cityName: "New York",
     setCityName: () => {},
