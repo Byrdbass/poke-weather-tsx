@@ -81,13 +81,14 @@ def create_weather_table():
         """))
     print("Weather table CREATED!")
 
-scheduler = BackgroundScheduler()
-scheduler.add_job(store_weather_data, "interval", minutes=1)  
-scheduler.start()
+# scheduler = BackgroundScheduler()
+# scheduler.add_job(store_weather_data, "interval", minutes=1)  
+# scheduler.start()
 
 
 if __name__ == "__main__":
     create_weather_table()
+    store_weather_data()
     print("Starting weather data collection...")
     while True:
         time.sleep(16) 
