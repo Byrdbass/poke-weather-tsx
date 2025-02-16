@@ -90,4 +90,4 @@ if __name__ == "__main__":
     create_weather_table()
     print("Starting weather data collection...")
     while True:
-        time.sleep(16) 
+        time.sleep(16)
