@@ -13,7 +13,6 @@ load_dotenv()
 API_KEY = os.getenv("WEATHER_API_KEY")
 BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
 
-# create database url and start database engine
 HOST = os.getenv("DB_HOST_NAME")
 USER = os.getenv("DB_USER")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
