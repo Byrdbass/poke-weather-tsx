@@ -3,6 +3,8 @@ Windows: `source .venv/Scripts/activate` or Mac: `source .venv/bin/activate`
 
 ## Install dependencies
 `pip install requests beautifulsoup4 pandas sqlalchemy apscheduler`
+`pip install pymysql`
+`pip install mysql-connector-python`
 
 ## error with mac 
 - llib3/__init__.py", line 42, in <module>
