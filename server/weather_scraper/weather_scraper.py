@@ -21,6 +21,8 @@ DB_NAME = os.getenv("DB_NAME")
 DB_URL = f"mysql+pymysql://{USER}:{DB_PASSWORD}@127.0.0.1:3306/{DB_NAME}"
 engine = create_engine(DB_URL)
 
+EXTREME_CITIES = ["Denver", "Agata", "Rhyolite", "Oymyakon", "Las Vegas", "Honolulu", "Loma", "Wellington"]
+# "Loma Montana"
 CITIES = [
     "New York", "Los Angeles", "Chicago", "Miami", "Seattle", "Toronto", "Mexico City", "São Paulo", "Buenos Aires", 
     "London", "Paris", "Berlin", "Madrid", "Rome", "Amsterdam", "Copenhagen", "Stockholm", "Oslo", "Helsinki", "Dublin",
@@ -60,7 +62,7 @@ def fetch_weather(city):
         return None
 
 def store_weather_data():
-    weather_records = [fetch_weather(city) for city in CITIES]
+    weather_records = [fetch_weather(city) for city in EXTREME_CITIES]
     weather_records = [record for record in weather_records if record]  # Filter out failed requests
 
     if weather_records:
@@ -84,16 +86,16 @@ def create_weather_table():
         """))
     print("Weather table CREATED!")
     
-def update_weather_table():
-    with engine.connect() as conn:
-        conn.execute(text("""
-            ALTER TABLE weather
-            ADD COLUMN feels_like FLOAT,
-            ADD COLUMN temp_min FLOAT,
-            ADD COLUMN temp_max FLOAT,
-            ADD COLUMN pressure INT;
-        """))
-    print("Weather table UPDATED with new columns!")
+# def update_weather_table():
+#     with engine.connect() as conn:
+#         conn.execute(text("""
+#             ALTER TABLE weather
+#             ADD COLUMN feels_like FLOAT,
+#             ADD COLUMN temp_min FLOAT,
+#             ADD COLUMN temp_max FLOAT,
+#             ADD COLUMN pressure INT;
+#         """))
+#     print("Weather table UPDATED with new columns!")
 
 # scheduler = BackgroundScheduler()
 # scheduler.add_job(store_weather_data, "interval", minutes=1)  
@@ -101,8 +103,8 @@ def update_weather_table():
 
 
 if __name__ == "__main__":
-    update_weather_table()
+    # update_weather_table()
     store_weather_data()
     print("Starting weather data collection...")
-    while True:
-        time.sleep(16)
+    # while True:
+    #     time.sleep(16)
