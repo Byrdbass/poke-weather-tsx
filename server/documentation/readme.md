@@ -21,3 +21,10 @@ Windows: `source .venv/Scripts/activate` or Mac: `source .venv/bin/activate`
     - had to run `pip install urllib3==1.26.6`
     - [Stack Overflow for urlib3](https://stackoverflow.com/questions/76187256/importerror-urllib3-v2-0-only-supports-openssl-1-1-1-currently-the-ssl-modu)
 
+## directory structure in txt
+        server/
+            |── weather_scraper
+            │   ── config.py
+            │── db/
+            │   │── weather_scraper_db/
+            │       │── create_weather_table.py 
