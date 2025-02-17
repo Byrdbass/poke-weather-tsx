@@ -43,6 +43,10 @@ def fetch_weather(city):
         weather_data = {
             "city": data["name"],
             "temperature": data["main"]["temp"],
+            "feels_like": data['main']['feels_like'],
+            "temp_min": data["main"]['temp_min'],
+            "temp_max": data['main']['temp_max'],
+            "pressure" : data['main']['pressure'],
             "humidity": data["main"]["humidity"],
             "wind_speed": data["wind"]["speed"],
             "description": data["weather"][0]["description"],
@@ -79,6 +83,17 @@ def create_weather_table():
             );
         """))
     print("Weather table CREATED!")
+    
+def update_weather_table():
+    with engine.connect() as conn:
+        conn.execute(text("""
+            ALTER TABLE weather
+            ADD COLUMN feels_like FLOAT,
+            ADD COLUMN temp_min FLOAT,
+            ADD COLUMN temp_max FLOAT,
+            ADD COLUMN pressure INT;
+        """))
+    print("Weather table UPDATED with new columns!")
 
 # scheduler = BackgroundScheduler()
 # scheduler.add_job(store_weather_data, "interval", minutes=1)  
@@ -86,7 +101,7 @@ def create_weather_table():
 
 
 if __name__ == "__main__":
-    create_weather_table()
+    update_weather_table()
     store_weather_data()
     print("Starting weather data collection...")
     while True:
