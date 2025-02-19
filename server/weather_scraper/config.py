@@ -1,18 +1,14 @@
 import os
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
+from config.connection import HOST, USER, DB_PASSWORD, DB_NAME
 
 load_dotenv()
 
 API_KEY = os.getenv("WEATHER_API_KEY")
 BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
 
-HOST = os.getenv("DB_HOST_NAME")
-USER = os.getenv("DB_USER")
-DB_PASSWORD = os.getenv("DB_PASSWORD")
-DB_NAME = os.getenv("DB_NAME")
-
-DB_URL = f"mysql+pymysql://{USER}:{DB_PASSWORD}@127.0.0.1:3306/{DB_NAME}"
+DB_URL = f"mysql+pymysql://{USER}:{DB_PASSWORD}@{HOST}/{DB_NAME}"
 engine = create_engine(DB_URL)
 
 EXTREME_CITIES = ["Denver", "Agata", "Rhyolite", "Oymyakon", "Las Vegas", "Honolulu", "Loma", "Wellington"]

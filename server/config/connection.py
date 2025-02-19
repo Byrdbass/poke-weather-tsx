@@ -10,9 +10,9 @@ DB_PASSWORD = os.getenv("DB_PASSWORD")
 DB_NAME = os.getenv("DB_NAME")
 
 mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="password"
+    host=HOST,
+    user=USER,
+    password=DB_PASSWORD
 )
 
 if mydb.is_connected():

@@ -3,7 +3,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 import time
 from weather_scraper.store_weather import store_weather_data
 from db.weather_scraper_db.create_weather_table import create_weather_table
-
+from db.poke_weather_match_db.create_poke_weather_match import create_poke_weather_match
 
 # def update_weather_table():
 #     with engine.connect() as conn:
@@ -22,7 +22,8 @@ from db.weather_scraper_db.create_weather_table import create_weather_table
 
 
 if __name__ == "__main__":
-    create_weather_table()
+    # create_weather_table()
+    # create_poke_weather_match()
     print("Starting weather data collection...")
     store_weather_data()
     # while True:

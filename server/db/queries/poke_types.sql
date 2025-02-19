@@ -1,0 +1,1 @@
+SELECT DISTINCT(types) FROM poke_weather_db.pokemon ORDER BY types DESC;

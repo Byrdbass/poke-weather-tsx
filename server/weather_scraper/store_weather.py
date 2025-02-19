@@ -6,7 +6,7 @@ import weather_scraper.fetch_weather
 def store_weather_data():
     # avoiding import loop - define var here inside function
     fetch_weather = weather_scraper.fetch_weather
-    weather_records = [fetch_weather(city) for city in EXTREME_CITIES]
+    weather_records = [fetch_weather(city) for city in CITIES]
     weather_records = [record for record in weather_records if record]  # Filter out failed requests
 
     if weather_records:

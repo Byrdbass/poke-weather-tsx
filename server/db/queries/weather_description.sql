@@ -1,0 +1,1 @@
+SELECT DISTINCT(description) FROM poke_weather_db.weather ORDER BY description;
