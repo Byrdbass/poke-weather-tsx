@@ -23,7 +23,7 @@ from db.poke_weather_match_db.create_poke_weather_match import create_poke_weath
 
 if __name__ == "__main__":
     # create_weather_table()
-    # create_poke_weather_match()
+    create_poke_weather_match()
     print("Starting weather data collection...")
     store_weather_data()
     # while True:
