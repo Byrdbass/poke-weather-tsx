@@ -1,6 +1,6 @@
 import React, {createContext, useState, useEffect, ReactNode, useContext, useRef} from "react";
 
-import { getCityWeather } from "../api/fetchWeather";
+import { getCityWeather } from "../api/fetchWeather.ts";
 import { WeatherType } from "../../types/index.ts";
 
 interface WeatherContextType {
@@ -44,7 +44,8 @@ const WeatherProvider: React.FC<WeatherProviderProps> = ({ children }) => {
             return
         }
         getCityWeather(cityName)
-            .then((data: WeatherType) => {
+        .then((data: WeatherType) => {
+                console.log(cityName)
                 setTempF(`${data.main.temp}°F`);
                 setDescription(data.weather[0].description);
                 setIconURL(`https://openweathermap.org/img/wn/${data.weather[0].icon}.png`);
