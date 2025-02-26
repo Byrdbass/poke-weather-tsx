@@ -1,0 +1,18 @@
+.weather-inner-div{
+    padding: 5px;
+    border: outset 2px blue;
+    position: relative;
+    flex-direction: row;
+}
+.weather-icon-div{
+    padding: 10px
+}
+
+
+.city-name{
+    font-size: 30px;
+}
+
+.tempF{
+    font-size: 50px;
+}

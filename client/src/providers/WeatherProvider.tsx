@@ -48,7 +48,7 @@ const WeatherProvider: React.FC<WeatherProviderProps> = ({ children }) => {
                 console.log(cityName)
                 setTempF(`${data.main.temp}°F`);
                 setDescription(data.weather[0].description);
-                setIconURL(`https://openweathermap.org/img/wn/${data.weather[0].icon}.png`);
+                setIconURL(`https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`);
                 setWindSpeed(`${data.wind.speed} mph`);
             })
             .catch((error) => {
