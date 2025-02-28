@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect, ReactNode, useContext, useRe
 
 import { getPokemonDataByName } from "../api/fetchPokemon";
 import { PokemonData } from "../../types/index.ts";
+import { capitalizeWords } from "../helpers/capitalize.ts";
 
 interface PokemonContextType {
     pokeID: number;
@@ -14,11 +15,11 @@ interface PokemonContextType {
 
 const PokemonContext = createContext<PokemonContextType>({
     pokeID: 0,
-    setPokeId: () => {},
+    setPokeId: () => { },
     pokemonName: "",
-    setPokemonName: () => {},
+    setPokemonName: () => { },
     spriteFrontDefault: "",
-    setSpriteFrontDefault: () => {}
+    setSpriteFrontDefault: () => { }
 
 });
 
@@ -33,23 +34,24 @@ const PokemonProvider: React.FC<PokemonProviderProps> = ({ children }) => {
     const [pokemonName, setPokemonName] = useState<string>("pikachu");
     const [spriteFrontDefault, setSpriteFrontDefault] = useState<string>("")
 
-    useEffect(()=>{
-        if(isFirstRender.current){
+    useEffect(() => {
+        if (isFirstRender.current) {
             isFirstRender.current = false;
             return
         }
         getPokemonDataByName(pokemonName)
-        .then((data: PokemonData) => {
-            console.log(data)
-            setPokeId(data.id);
-            setSpriteFrontDefault(data.sprites.front_default)
-            // setPokemonName(data.pokemonName);
+            .then((data: PokemonData) => {
+                console.log(data)
+                setPokeId(data.id);
+                setPokemonName(capitalizeWords(data.name))
+                setSpriteFrontDefault(data.sprites.front_default)
+                // setPokemonName(data.pokemonName);
 
-        })
-        .catch((e) => {
-            console.error("error fetching pokemon data: ", e)
-        })
-    },[pokemonName])
+            })
+            .catch((e) => {
+                console.error("error fetching pokemon data: ", e)
+            })
+    }, [pokemonName])
 
     const value: PokemonContextType = {
         pokeID,
@@ -69,8 +71,8 @@ const PokemonProvider: React.FC<PokemonProviderProps> = ({ children }) => {
 
 const usePokemon = () => {
     const context = useContext(PokemonContext);
-    if(!context) {
-        throw new Error("usePokemon  must be used within a PokemonProvider")
+    if (!context) {
+        throw new Error("usePokemon must be used within a PokemonProvider")
     }
     return context;
 }
