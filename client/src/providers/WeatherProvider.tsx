@@ -3,6 +3,7 @@ import React, {createContext, useState, useEffect, ReactNode, useContext, useRef
 import { getCityWeather } from "../api/fetchWeather.ts";
 import { WeatherType } from "../../types/index.ts";
 
+//TODO: export this type
 interface WeatherContextType {
     tempF: string;
     setTempF: (tempF: string) => void;
@@ -16,7 +17,7 @@ interface WeatherContextType {
 const WeatherContext = createContext<WeatherContextType>({
     tempF: '',
     setTempF: () => {},
-    cityName: "New York",
+    cityName: "",
     setCityName: () => {},
     description: "",
     iconURL: "",
@@ -29,11 +30,11 @@ interface WeatherProviderProps {
 
 const WeatherProvider: React.FC<WeatherProviderProps> = ({ children }) => {
     const isFirstRender = useRef(true);
-
+    //TODO - do i need this variable?
     const urlOneCall: string = 'https://api.openweathermap.org/data/2.5/onecall?lat=';
     
     const [tempF, setTempF] = useState<string>("N/A");
-    const [cityName, setCityName] = useState<string>("New York");
+    const [cityName, setCityName] = useState<string>("Austin");
     const [description, setDescription] = useState<string>("");
     const [iconURL, setIconURL] = useState<string>("");
     const [windSpeed, setWindSpeed] = useState<string>("");
@@ -45,7 +46,6 @@ const WeatherProvider: React.FC<WeatherProviderProps> = ({ children }) => {
         }
         getCityWeather(cityName)
         .then((data: WeatherType) => {
-                console.log(cityName)
                 setTempF(`${data.main.temp}°F`);
                 setDescription(data.weather[0].description);
                 setIconURL(`https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`);
@@ -59,7 +59,6 @@ const WeatherProvider: React.FC<WeatherProviderProps> = ({ children }) => {
         // }
 
     }, [cityName])
-    console.log(tempF, cityName, windSpeed)
     const value: WeatherContextType = {
         tempF,
         setTempF,

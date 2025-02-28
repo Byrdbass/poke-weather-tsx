@@ -12,4 +12,5 @@ const getCityWeather = async (cityName: string): Promise<WeatherType> => {
     return data;
 }
 
+//TODO: CREATE ANOTHER FUNCTION FOR getting weather by lat and lon - new file?
 export { getCityWeather }

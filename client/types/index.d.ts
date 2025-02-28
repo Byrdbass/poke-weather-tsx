@@ -1,2 +1,3 @@
 import { WeatherType } from './weather.ts'
-export { WeatherType }
+import { PokemonData } from './pokemon.ts'
+export { WeatherType, PokemonData }

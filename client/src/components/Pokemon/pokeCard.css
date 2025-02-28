@@ -1,0 +1,11 @@
+.poke-name {
+    font-size: 35px;
+}
+
+.poke-id{
+    font-size: 10px;
+}
+
+.poke-img{
+    position: relative;
+}
