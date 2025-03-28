@@ -3,6 +3,7 @@ import { WeatherProvider } from "./providers/WeatherProvider";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import './assets/fonts/PokemonGb-RAeo.ttf';
 import WeatherCard from "./components/Weather/WeatherCard";
 import { PokemonProvider } from "./providers/PokemonProvider";
 import PokeCard from "./components/Pokemon/PokeCard";

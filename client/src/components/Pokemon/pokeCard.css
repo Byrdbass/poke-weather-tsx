@@ -1,4 +1,10 @@
+@font-face {
+    font-family: 'PokemonGb-RAeo';
+    src: local("PokemonGb-RAeo") url('../../assets/PokemonGb-RAeo.ttf') format('truetype');
+}
+
 .poke-name {
+    
     font-size: 35px;
 }
 

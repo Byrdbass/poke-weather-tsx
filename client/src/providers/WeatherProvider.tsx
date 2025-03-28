@@ -49,7 +49,7 @@ const WeatherProvider: React.FC<WeatherProviderProps> = ({ children }) => {
             .then((data: WeatherType) => {
                 setTempF(`${data.main.temp}°F`);
                 setCityName(capitalizeWords(data.name))
-                setDescription(data.weather[0].description);
+                setDescription(capitalizeWords(data.weather[0].description));
                 setIconURL(`https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`);
                 setWindSpeed(`${data.wind.speed} mph`);
             })
